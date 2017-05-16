@@ -14,7 +14,7 @@ IKEA Tradfri uses the following protocol stack:
 
 CoAP build and install
 ----------------------
-A small script has been made to build and install CoAP with DTLS on a debian/raspbian Linux host.
+A small script, create_coap_w_dtls.sh, has been written to build and install CoAP with DTLS on a debian/raspbian Linux host.
 
 tradfri_cycle.py
 ----------------

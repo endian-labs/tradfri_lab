@@ -5,15 +5,20 @@
 # https://github.com/bwssytems/ha-bridge/issues/570 thread.
 # Tord Andersson, 2017-04-25. 
 
+import subprocess
 import os
 import time
 import math
+import sys
+
+
+status, output = subprocess.call('dig +short myip.opendns.com @resolver1.opendns.com', shell=True)
+hubip = output.strip()
 
 coap = '/usr/local/bin/coap-client'
 
 #Update to match your equipment
 securityid = 'USE_STICKER_KEY'
-hubip = '192.168.0.xyz'
 lightbulbid = '65537'
 
 tradfriHub = 'coaps://{}:5684/15001/{}'.format(hubip, lightbulbid)

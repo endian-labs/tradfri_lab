@@ -1,1 +1,13 @@
 https://bitsex.net/software/2017/coap-endpoints-on-ikea-tradfri/
+https://en.wikipedia.org/wiki/CIE_1931_color_space#CIE_xy_chromaticity_diagram_and_the_CIE_xyY_color_space
+https://github.com/IPSO-Alliance/pub/tree/master/reg
+https://github.com/home-assistant/home-assistant
+https://github.com/obgm/libcoap
+https://github.com/eclipse/californium.tools
+http://sprunge.us/CCQF
+http://www.openmobilealliance.org/tech/profiles/lwm2m/3311.xml
+
+https://github.com/bwssytems/ha-bridge/issues/570
+https://github.com/hardillb/TRADFRI2MQTT
+https://github.com/endian-labs/tradfri_lab
+https://github.com/ggravlingen/pytradfri/

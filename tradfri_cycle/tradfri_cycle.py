@@ -8,7 +8,6 @@
 import subprocess
 import os
 import time
-import math
 import sys
 
 coap = '/usr/local/bin/coap-client'
@@ -67,21 +66,79 @@ def cycle ():
     time.sleep(0.5)
 
 #query all the available endpoints:
-def query_all_enpoints():
-    #./coap-client -u "Client_identity" -k "YOUR_KEY" -v 10 -m get "coaps://192.168.0.3:5684/.well-known/core"
-    #/usr/local/bin/coap-client -m get -u "Client_identity" -k "E4QjQ03vBi9JVFhX" "coaps://192.168.2.188/.well-known/core"
-    api = '{} -m get -u "Client_identity" -k "{}" "{}"'.format(coap, securityid, 'coaps://' + hubip + '/.well-known/core')
-    #print api
-    #sys.exit()
+def query_entity(entities):
+    method = '{}{}'.format(entities[0], '/' + entities[1] if len(entities) == 2 else '')
+    api = '{} -m get -u "Client_identity" -k "{}" "coaps://{}"/{}'.format(coap, securityid, hubip, method)
     if os.path.exists(coap):
-        print "======START======"
         out = subprocess.check_output(api, shell=True)
         print out.decode("utf-8")
-        print "=======END======="
     else:
         sys.stderr.write('[-] libcoap: could not find libcoap\n')
         sys.exit(1)
-    sys.exit()
+
+
+def query_all_enpoints():
+    #./coap-client -u "Client_identity" -k "YOUR_KEY" -v 10 -m get "coaps://192.168.0.3:5684/.well-known/core"
+    method = '.well-known/core'
+    api = '{} -m get -u "Client_identity" -k "{}" "coaps://{}"/{}'.format(coap, securityid, hubip, method)
+    #print api
+    #sys.exit()
+    if os.path.exists(coap):
+        print "======RAW INPUT======"
+        out = subprocess.check_output(api, shell=True)
+        print out.decode("utf-8")
+        print "=========END=========\n"
+
+        out = [item.replace(';ct=0;obs\n', '') for sublist in [x.split(';ct=0,') for x in out.split(';ct=0;obs,')] for item in sublist]
+        for i, val in enumerate(out):
+            out[i] = out[i].replace('<//', '')
+            out[i] = out[i].replace('>', '')
+            out[i] = out[i].split('/')
+
+        print "====PARSED INPUT====="
+        print out
+        print "=========END=========\n"
+
+        lights = [entry for entry in out if entry[0] == '15001' and len(entry) == 2 and entry[1].isdigit()]
+        groups = [entry for entry in out if entry[0] == '15004' and len(entry) == 2 and entry[1].isdigit()]
+        scenes = [entry for entry in out if entry[0] == '15005' and len(entry) == 2 and entry[1].isdigit()]
+        gateways = [entry for entry in out if entry[0] == '15011' and len(entry) == 2 and entry[1].isdigit()]
+
+        combined = lights + groups + scenes + gateways
+        print "===PARSED LIGHTS==="
+        print lights
+        print "=========END=========\n"
+
+        print "====PARSED GROUPS===="
+        print groups
+        print "=========END=========\n"
+
+        print "====PARSED SCENES===="
+        print scenes
+        print "=========END=========\n"
+
+        print "====PARSED GATEWAYS===="
+        print gateways
+        print "=========END=========\n"
+
+        for entity in combined:
+            query_entity(entity)
+
+    else:
+        sys.stderr.write('[-] libcoap: could not find libcoap\n')
+        sys.exit(1)
+
+def direct_query():
+    print 'LIGHTS'
+    query_entity(['15001'])
+    print 'GROUPS'
+    query_entity(['15004'])
+    print 'SCENES'
+    query_entity(['15005'])
+    print 'GATEWAYS'
+    query_entity(['15011'])
+    print 'UNKNOWN'
+    query_entity(['15010'])
 
 #while True:
 #    cycle()
@@ -89,3 +146,5 @@ def query_all_enpoints():
 change()
 
 #query_all_enpoints()
+
+#direct_query()

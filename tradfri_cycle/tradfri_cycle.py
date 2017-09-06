@@ -3,8 +3,8 @@
 # A small experiment to cycle colors in a Tradfri LED bulb
 # using the Tradfri Gateway. Information retrieved from sources in the
 # https://github.com/bwssytems/ha-bridge/issues/570 thread.
-# Tord Andersson, 2017-04-25. 
-
+# Tord Andersson, 2017-04-25.
+import json
 import subprocess
 import os
 import time
@@ -136,6 +136,37 @@ def some_nice_stuff():
     set_entinty(['15001', lightbulb_id], '{"3311":[{"5706":"c984bb"}]}')
 
 
+
+def listen_to(entity):
+    #coap-client -u "Client_identity" -k {KEY} -s "60" "coaps://{IP}:5684/15001/65537"
+    method = format_entity(entity)
+    api = '{} -u "Client_identity" -k "{}" -s "60" "coaps://{}/{}"'.format(coap, securityid, hubip, method)
+    print api
+    try:
+        proc = subprocess.Popen(api, shell=True)
+        stdout, stderr = proc.communicate()
+        print stdout, stderr
+    except subprocess.CalledProcessError as err:
+        print 'error'
+        sys.exit(1)
+
+
+
+def _process_output(output, parse_json=True):
+    """Process output."""
+    output = output.strip()
+
+    if not output:
+        return None
+
+
+    elif not parse_json:
+        return output
+
+    return json.loads(output)
+
+
+
 def more_stuff1():
     for i in range(0, 255, 3):
         set_entinty(['15004', '154580'], '{"5851":' + str(i) + '}')
@@ -173,7 +204,10 @@ def more_stuff2():
 #query_entity(['15001', '65538'])
 #{"9001":"TRADFRI bulb E27 CWS opal 600lm","9002":1504616889,"9020":1504696103,"9003":65538,"3":{"3":"1.3.002","0":"IKEA of Sweden","1":"TRADFRI bulb E27 CWS opal 600lm","2":"","6":1},"9054":0,"5750":2,"3311":[{"5706":"0","5850":1,"5851":80,"5707":0,"5708":0,"5709":32886,"5710":27217,"5711":0,"9003":0}],"9019":1}
 
-more_stuff2()
+#more_stuff2()
+
+print 'lol!'
+listen_to(['15001', '65537'])
 
 # c984bb, ebb63e, e78834, da5d41, d9337c
 

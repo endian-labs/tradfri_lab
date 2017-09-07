@@ -223,7 +223,10 @@ def query_color_settings():
 def query_tasks():
     pass
 
-query_tasks()
+
+print [query_entity(['15001', str(x)]) for x in query_entity(['15001'])]
+
+#query_tasks()
 #query_all_enpoints()
 #set_entinty(['15001', lightbulb_id], '{"3311":[{"5706":"e78834"}]}')
 #set_entinty(['15001', lightbulb_id], '{"3311":[{"5712": 100, "5706":"e78834"}]}')

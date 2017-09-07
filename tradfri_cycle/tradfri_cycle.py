@@ -41,24 +41,31 @@ def cycle ():
     time.sleep(0.1)
 
 #query all the available endpoints:
-def format_entity(entity):
+def entity_to_string(entity):
     return '{}{}{}'.format(str(entity[0]) if len(entity) >= 1 else '', '/' + str(entity[1]) if len(entity) >= 2 else '',
                     '/' + str(entity[2]) if len(entity) >= 3 else '')
 
 
+def string_to_entity(entity_string):
+    try:
+        return json.loads(entity_string)
+    except:
+        print "This is an error message for: " + entity_string
+
+
 def query_entity(entity):
-    method = format_entity(entity)
+    method = entity_to_string(entity)
     api = '{} -m get -u "Client_identity" -k "{}" "coaps://{}/{}"'.format(coap, securityid, hubip, method)
     if os.path.exists(coap):
         out = subprocess.check_output(api, shell=True)
-        print out.decode("utf-8")
+        return string_to_entity(out)
     else:
         sys.stderr.write('[-] libcoap: could not find libcoap\n')
         sys.exit(1)
 
 
 def set_entinty(entity, settings):
-    method = format_entity(entity)
+    method = entity_to_string(entity)
     api = '{} -m put -u "Client_identity" -k "{}" -e \'{}\' "coaps://{}/{}"'.format(coap, securityid, settings, hubip, method)
     if os.path.exists(coap):
         os.popen(api)
@@ -139,9 +146,8 @@ def some_nice_stuff():
 
 def listen_to(entity):
     #coap-client -u "Client_identity" -k {KEY} -s "60" "coaps://{IP}:5684/15001/65537"
-    method = format_entity(entity)
+    method = entity_to_string(entity)
     api = '{} -u "Client_identity" -k "{}" -s "60" "coaps://{}/{}"'.format(coap, securityid, hubip, method)
-    print api
     try:
         proc = subprocess.Popen(api, shell=True)
         stdout, stderr = proc.communicate()
@@ -206,8 +212,23 @@ def more_stuff2():
 
 #more_stuff2()
 
-print 'lol!'
-listen_to(['15001', '65537'])
+#listen_to(['15001', '65537'])
 
 # c984bb, ebb63e, e78834, da5d41, d9337c
 
+def query_color_settings():
+    for color_settings in[y['3311'] for y in [query_entity(['15001', str(x)]) for x in query_entity(['15001'])] if '3311' in y]:
+        print color_settings
+
+def query_tasks():
+    for color_settings in[y['3311'] for y in [query_entity(['15001', str(x)]) for x in query_entity(['15001'])] if '3311' in y]:
+        print color_settings
+
+
+#set_entinty(['15001', lightbulb_id], '{"3311":[{"5706":"e78834"}]}')
+set_entinty(['15001', lightbulb_id], '{"3311":[{"5712": 100, "5706":"e78834"}]}')
+
+#while True:
+#    query_color_settings()
+#    print
+#    time.sleep(1.5)

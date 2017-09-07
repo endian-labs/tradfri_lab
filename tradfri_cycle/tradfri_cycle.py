@@ -224,7 +224,7 @@ def query_tasks():
     pass
 
 
-print [query_entity(['15001', str(x)]) for x in query_entity(['15001'])]
+#print [query_entity(['15001', str(x)]) for x in query_entity(['15001'])]
 
 #query_tasks()
 #query_all_enpoints()
@@ -232,6 +232,8 @@ print [query_entity(['15001', str(x)]) for x in query_entity(['15001'])]
 #set_entinty(['15001', lightbulb_id], '{"3311":[{"5712": 100, "5706":"e78834"}]}')
 
 #print query_entity(['15009'])
+
+print query_entity(['15006'])
 
 #while True:
 #    query_color_settings()

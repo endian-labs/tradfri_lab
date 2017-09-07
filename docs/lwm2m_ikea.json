@@ -305,33 +305,51 @@
     }
   },
   "15006": {
-    "name": ""
+    "name": "",
+    "example": [{
+      "9014": {
+        "name": "NOTIFICATION_STATE",
+        "example": 0
+      },
+      "9015": {
+        "name": "NOTIFICATION_EVENT",
+        "example": 5001
+      },
+      "9002": {
+        "name": "CREATED_AT",
+        "example": 1504794867
+      }
+    }]
   },
   "15010": {
-    "name": ""
+    "name": "SMART_TASKS",
+    "example": []
   },
   "15011": {
-    "15012": {
-
+    "name": "GATEWAY",
+    "description": "Operations on the gateway",
+    "15011/15012": {
+      "name": "GATEWAY_DETAILS"
     },
-    "9034": {
-
+    "15011/9034": {
+      "name": "UPDATE_FIRMWARE"
     },
-    "9030": {
-
+    "15011/9030": {
+      "name": "REBOOT"
     },
-    "9031": {
-
+    "15011/9031": {
+      "name": "RESET"
     },
-    "9063": {
-
+    "15011/9063": {
+      "name": "AUTH_PATH"
     },
-    "9033": {
-
+    "15011/9033": {
+      "name": "SESSION_ID"
     }
   },
   "status": {
-    "name": ""
+    "name": "",
+    "example": {}
   }
 }
 

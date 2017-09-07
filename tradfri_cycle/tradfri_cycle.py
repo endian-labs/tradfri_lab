@@ -221,12 +221,14 @@ def query_color_settings():
         print color_settings
 
 def query_tasks():
-    for color_settings in[y['3311'] for y in [query_entity(['15001', str(x)]) for x in query_entity(['15001'])] if '3311' in y]:
-        print color_settings
+    pass
 
-
+query_tasks()
+#query_all_enpoints()
 #set_entinty(['15001', lightbulb_id], '{"3311":[{"5706":"e78834"}]}')
-set_entinty(['15001', lightbulb_id], '{"3311":[{"5712": 100, "5706":"e78834"}]}')
+#set_entinty(['15001', lightbulb_id], '{"3311":[{"5712": 100, "5706":"e78834"}]}')
+
+#print query_entity(['15009'])
 
 #while True:
 #    query_color_settings()

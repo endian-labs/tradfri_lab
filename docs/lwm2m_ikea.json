@@ -1,0 +1,414 @@
+{
+  "15001": {
+    "name": "DEVICES",
+    "description": "Device ids for lights and remotes.",
+    "example": [
+      65536,
+      65537,
+      65538
+    ],
+    "15001/DeviceId": [
+      {
+        "9019": {
+          "name": "REACHABILITY_STATE",
+          "example": 1
+        },
+        "3": {
+          "name": "DEVICE_INFO",
+          "example": {
+            "1": "TRADFRI bulb E27 CWS opal 600lm",
+            "0": "IKEA of Sweden",
+            "3": "1.3.002",
+            "2": "",
+            "6": 1
+          }
+        },
+        "5750": {
+          "name": "APPLICATION_TYPE",
+          "example": 2
+        },
+        "9003": {
+          "name": "INSTANCE_ID",
+          "example": 65538
+        },
+        "9002": {
+          "name": "CREATED_AT",
+          "example": 1504616889
+        },
+        "9001": {
+          "name": "NAME",
+          "example": "Badass bulb"
+        },
+        "3311": {
+          "name": "LIGHT_CONTROL",
+          "example": [
+            {
+              "5708": 0,
+              "5709": {
+                "name": "LIGHT_COLOR_X",
+                "example": 30140
+              },
+              "5710": {
+                "name": "LIGHT_COLOR_Y",
+                "example": 26909
+              },
+              "5706": {
+                "name": "LIGHT_COLOR",
+                "example": "f1e0b5"
+              },
+              "5707": 0,
+              "5711": 0,
+              "5712": {
+                "name": "TRANSITION_TIME",
+                "description": "Specified in seconds/10.",
+                "example": 100
+              },
+              "5850": {
+                "name": "ON/OFF",
+                "example": 1
+              },
+              "5851": {
+                "name": "LIGHT_DIMMER",
+                "example": 160
+              },
+              "9003": {
+                "name": "INSTANCE_ID",
+                "example": 0
+              }
+            }
+          ]
+        },
+        "9054": {
+          "name": "OTA_UPDATE_STATE",
+          "example": 0
+        },
+        "9020": {
+          "name": "LAST_SEEN",
+          "example": 1504769379
+        }
+      }
+    ]
+  },
+  "15004": {
+    "name": "GROUPS",
+    "description": "Groups of devices.",
+    "example": [
+      154580
+    ],
+    "15004/GroupId": {
+      "5850": {
+        "name": "ON/OFF",
+        "example": 1
+      },
+      "9002": {
+        "name": "CREATED_AT",
+        "example": 1504610855
+      },
+      "9001": {
+        "name": "NAME",
+        "example": "My phat group name"
+      },
+      "9003": {
+        "name": "INSTANCE_ID",
+        "example": 154580
+      },
+      "9039": {
+        "name": "SCENE_ID",
+        "example": 205512
+      },
+      "9018": {
+        "name": "HS_ACCESSORY_LINK",
+        "example": {
+          "15002": {
+            "name": "HS_LINK",
+            "example": {
+              "9003": {
+                "name": "INSTANCE_ID",
+                "description": "DeviceIds reached by: 15001/DeviceId",
+                "example": [
+                  65536,
+                  65537,
+                  65538
+                ]
+              }
+            }
+          }
+        }
+      },
+      "5851": {
+        "name": "LIGHT_DIMMER",
+        "example": 0
+      }
+    }
+  },
+  "15005": {
+    "name": "SCENES_TOP",
+    "description": "Some kind of top scene structure",
+    "example": [
+      154580
+    ],
+    "15005/SceneTopId": {
+      "name": "SCENES",
+      "description": "List of all scenes",
+      "example": [
+        217404,
+        228154,
+        203200,
+        205512
+      ],
+      "15005/SceneTopId/SceneId": {
+        "9068": {
+          "name": "IKEA_MOODS",
+          "example": 1
+        },
+        "15013": {
+          "name": "LIGHT_SETTING",
+          "description": "Interesting that two LIGHT_CONTROL's are specified here.",
+          "example": [
+            {
+              "5708": 0,
+              "5709": {
+                "name": "LIGHT_COLOR_X",
+                "example": 30140
+              },
+              "5710": {
+                "name": "LIGHT_COLOR_Y",
+                "example": 26909
+              },
+              "5706": {
+                "name": "LIGHT_COLOR",
+                "example": "f1e0b5"
+              },
+              "5707": 0,
+              "5711": 0,
+              "5850": {
+                "name": "ON/OFF",
+                "example": 1
+              },
+              "5851": {
+                "name": "LIGHT_DIMMER",
+                "example": 203
+              },
+              "9003": {
+                "name": "INSTANCE_ID",
+                "example": 65537
+              }
+            },
+            {
+              "5708": 0,
+              "5709": {
+                "name": "LIGHT_COLOR_X",
+                "example": 30140
+              },
+              "5710": {
+                "name": "LIGHT_COLOR_Y",
+                "example": 26909
+              },
+              "5706": {
+                "name": "LIGHT_COLOR",
+                "example": "f1e0b5"
+              },
+              "5707": 0,
+              "5711": 0,
+              "5850": {
+                "name": "ON/OFF",
+                "example": 1
+              },
+              "5851": {
+                "name": "LIGHT_DIMMER",
+                "example": 203
+              },
+              "9003": {
+                "name": "INSTANCE_ID",
+                "example": 65538
+              }
+            }
+          ]
+        },
+        "9003": {
+          "name": "INSTANCE_ID",
+          "example": 217404
+        },
+        "9002": {
+          "name": "CREATED_AT",
+          "example": 1504610855
+        },
+        "9001": {
+          "name": "NAME",
+          "example": "EVERYDAY"
+        },
+        "9057": {
+          "name": "SCENE_INDEX",
+          "example": 0
+        }
+      }
+    }
+  },
+  "15009": {
+    "name": "SWITCH"
+  },
+  "15010": {
+    "name": ""
+  },
+  "15011": {},
+  "status": {},
+  "lol": [
+    [
+      "15005",
+      "154580",
+      "205512"
+    ],
+    [
+      "15005",
+      "154580",
+      "217404"
+    ],
+    [
+      "15005",
+      "154580",
+      "228154"
+    ],
+    [
+      "15005",
+      "154580",
+      "203200"
+    ],
+    [
+      "15001"
+    ],
+    [
+      "15001",
+      "reset"
+    ],
+    [
+      "status"
+    ],
+    [
+      "15005"
+    ],
+    [
+      "15004"
+    ],
+    [
+      "15004",
+      "add"
+    ],
+    [
+      "15004",
+      "remove"
+    ],
+    [
+      "15006"
+    ],
+    [
+      "15011",
+      "15012"
+    ],
+    [
+      "15011",
+      "9034"
+    ],
+    [
+      "15011",
+      "9030"
+    ],
+    [
+      "15011",
+      "9031"
+    ],
+    [
+      "15011",
+      "9063"
+    ],
+    [
+      "15011",
+      "9033"
+    ],
+    [
+      "15010"
+    ]
+  ],
+  "lol2": [
+    {
+      "9019": 1,
+      "3": {
+        "1": "TRADFRI bulb E27 CWS opal 600lm",
+        "0": "IKEA of Sweden",
+        "3": "1.3.002",
+        "2": "",
+        "6": 1
+      },
+      "5750": 2,
+      "9003": 65538,
+      "9002": 1504616889,
+      "9001": "TRADFRI bulb E27 CWS opal 600lm",
+      "3311": [
+        {
+          "5708": 0,
+          "5709": 30140,
+          "5706": "f1e0b5",
+          "5707": 0,
+          "5711": 0,
+          "5710": 26909,
+          "5850": 1,
+          "5851": 160,
+          "9003": 0
+        }
+      ],
+      "9054": 0,
+      "9020": 1504769379
+    },
+    {
+      "9019": 1,
+      "3": {
+        "1": "FLOALT panel WS 60x60",
+        "0": "IKEA of Sweden",
+        "3": "1.2.217",
+        "2": "",
+        "6": 1
+      },
+      "5750": 2,
+      "9003": 65537,
+      "9002": 1504610930,
+      "9001": "Panel",
+      "3311": [
+        {
+          "5708": 0,
+          "5709": 30140,
+          "5706": "f1e0b5",
+          "5707": 0,
+          "5711": 0,
+          "5710": 26909,
+          "5850": 1,
+          "5851": 160,
+          "9003": 0
+        }
+      ],
+      "9054": 0,
+      "9020": 1504769387
+    },
+    {
+      "9019": 1,
+      "3": {
+        "1": "TRADFRI remote control",
+        "0": "IKEA of Sweden",
+        "3": "1.2.214",
+        "2": "",
+        "6": 3,
+        "9": 87
+      },
+      "5750": 0,
+      "9003": 65536,
+      "9002": 1504610844,
+      "9001": "TRADFRI remote control",
+      "9054": 0,
+      "9020": 1504706016,
+      "15009": [
+        {
+          "9003": 0
+        }
+      ]
+    }
+  ]
+}
+

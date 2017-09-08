@@ -305,7 +305,7 @@
     }
   },
   "15006": {
-    "name": "",
+    "name": "NOTIFICATIONS",
     "example": [{
       "9014": {
         "name": "NOTIFICATION_STATE",
